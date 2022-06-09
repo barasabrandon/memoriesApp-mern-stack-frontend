@@ -1,0 +1,3 @@
+.card-body > p :hover {
+  color: orange;
+}

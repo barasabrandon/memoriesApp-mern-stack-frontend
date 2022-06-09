@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-image {
+  border: 1px solid black;
+  margin-right: 20px;
+  width: 70%;
+  border-radius: 5px;
+}
+
+.container-image > img {
+  width: 100%;
+}
+
+.container-comments {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 10px;
+  color: white;
+  background-color: blue;
+  opacity: 0.5;
+  padding: 20px;
+}
+
+.container-comments > p {
+  width: 50% !important;
+}
+
+hr {
+  background-color: green;
+}
+
+h6,
+h3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+}
