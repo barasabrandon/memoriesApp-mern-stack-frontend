@@ -20,7 +20,11 @@ function PostDetails() {
   }, [id]);
 
   const filteredPostItems = postsItems.filter((item) =>
-    item.title.toLowerCase().includes('test')
+    item.title.toLowerCase().includes(postItem.title.toLowerCase())
+  );
+
+  const finalFilteredItems = filteredPostItems.filter(
+    (item) => item._id !== postItem._id
   );
 
   return (
@@ -63,19 +67,17 @@ function PostDetails() {
               <CommentForm id={id} commentsRef={commentsRef} />
             </div>
           </div>
-          <hr />
-          <div className="related-topics">
-            <div>Related Posts </div>
-            <div className="related-topics-count">
-              {filteredPostItems.length}
-            </div>
-          </div>
-          <div className="row justify-content-center mt-3 mb-">
-            {filteredPostItems?.map((item, i) => (
-              <PostItemContainer key={i} {...item} />
-            ))}
-          </div>
         </div>
+      </div>
+      <hr />
+      <div className="related-topics">
+        <div>Related Memories </div>
+        <div className="related-topics-count">{finalFilteredItems?.length}</div>
+      </div>
+      <div className="row justify-content-center mt-3 mb-">
+        {finalFilteredItems?.map((item, i) => (
+          <PostItemContainer key={i} {...item} />
+        ))}
       </div>
     </>
   );

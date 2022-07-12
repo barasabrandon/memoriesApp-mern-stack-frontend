@@ -1,29 +1,15 @@
 import { Button } from '@mui/material';
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
-
-import './Home.css';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 function Header() {
-  const [hasLoggedOut, setHasLoggedOut] = useState(false);
-  const navigate = useNavigate();
   const userInLocalStorage = JSON.parse(localStorage.getItem('userProfile'));
   const checkUserName = userInLocalStorage?.result?.name;
 
   const handleLogout = (e) => {
     e.preventDefault();
     localStorage.clear();
-    window.location.reload(false);
-    setHasLoggedOut(!hasLoggedOut);
-  };
-
-  const handleSignInLink = () => {
-    if (checkUserName) {
-      setHasLoggedOut(!hasLoggedOut);
-    } else {
-      navigate('/signin');
-    }
   };
 
   return (
@@ -64,18 +50,14 @@ function Header() {
           </Link>
 
           {/* Signin */}
-          <div className="header-auth-container">
-            <div onClick={handleSignInLink} className="header-auth-text">
-              {checkUserName ? `${checkUserName}` : 'Sign in'}
-            </div>
+          <div>
+            <Link to="/signin">
+              <div>{checkUserName ? `${checkUserName}` : 'Sign in'}</div>
+            </Link>
           </div>
         </div>
       </nav>
-      {hasLoggedOut && (
-        <div className="header-logout-button">
-          <LogoutButton handleLogout={handleLogout} />
-        </div>
-      )}
+      <LogoutButton handleLogout={handleLogout} />
     </div>
   );
 }
@@ -83,18 +65,5 @@ function Header() {
 export default Header;
 
 const LogoutButton = ({ handleLogout }) => {
-  return (
-    <Button
-      style={{
-        border: 'none',
-        outline: 'none',
-        color: 'white',
-      }}
-      variant="outlined"
-      startIcon={<LogoutOutlinedIcon />}
-      onClick={handleLogout}
-    >
-      Logout
-    </Button>
-  );
+  return <Button onClick={handleLogout}>Logout</Button>;
 };

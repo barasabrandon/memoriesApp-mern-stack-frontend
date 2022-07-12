@@ -3,6 +3,7 @@ import axios from 'axios';
 const API = axios.create({
   baseURL: 'https://mern-memoriesapp-backend.herokuapp.com/',
 });
+
 // baseURL: 'http://localhost:5000',
 
 // POSTS

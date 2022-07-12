@@ -16,8 +16,7 @@ export const signInUser = (userData) => async (dispatch) => {
   dispatch(isLoadingState());
   try {
     const { data } = await api.signUser(userData);
-    // dispatch(authUser(data));
-    console.log(data);
+    dispatch(authUser(data));
   } catch (error) {
     console.log(error);
   }

@@ -38,61 +38,59 @@ function PostItemContainer({
   };
 
   return (
-    <div className="col-lg-3 col-md-3 col-sm-10 m-sm-3 m-1 ">
-      <div className="card">
-        <div className="image-icon-container">
-          {creator == checkUserEmail && (
-            <MoreHorizIcon className="morehoriz-icon" onClick={handleEditing} />
-          )}
+    <div className="card" id="post-item-container">
+      <div className="image-icon-container">
+        {creator == checkUserEmail && (
+          <MoreHorizIcon className="morehoriz-icon" onClick={handleEditing} />
+        )}
 
-          <img
-            src={imageFile}
-            className="memory-image"
-            alt={title}
-            loading="lazy"
-          />
-        </div>
-        <div
-          className="card-body"
-          style={{
-            backgroundColor: 'blue',
-            color: 'white',
-            opacity: 0.5,
-            fontStyle: 'italic',
-            cursor: 'pointer',
-          }}
-          onClick={viewPost}
-        >
-          <small>{title}</small>
-          <h5
-            className="card-title"
-            style={{
-              backgroundColor: 'blue',
-              color: 'yellow',
-            }}
-          >
-            {tags.map((tag) => `#${tag} `)}
-          </h5>
-          <p
-            className="card-text"
-            style={{ backgroundColor: 'blue', color: 'white' }}
-          >
-            <span>{message.slice(0, 45)}...</span>
-
-            <Link to={`/posts/${_id}`}>
-              <span className="view">View</span>
-            </Link>
-          </p>
-        </div>
-        <CardFooterButtons
-          id={_id}
-          showDeleteIcon
-          checkUserEmail={checkUserEmail}
-          likes={likes}
-          comments={comments}
-          creator={creator}
+        <img
+          src={imageFile}
+          className="memory-image"
+          alt={title}
+          loading="lazy"
         />
       </div>
+      <div
+        className="card-body"
+        style={{
+          backgroundColor: 'blue',
+          color: 'white',
+          opacity: 0.5,
+          fontStyle: 'italic',
+          cursor: 'pointer',
+        }}
+        onClick={viewPost}
+      >
+        <small>{title}</small>
+        <h5
+          className="card-title"
+          style={{
+            backgroundColor: 'blue',
+            color: 'yellow',
+          }}
+        >
+          {tags.map((tag) => `#${tag} `)}
+        </h5>
+        <p
+          className="card-text"
+          style={{ backgroundColor: 'blue', color: 'white' }}
+        >
+          <span>{message.slice(0, 45)}...</span>
+
+          <Link to={`/posts/${_id}`}>
+            <span className="view">View</span>
+          </Link>
+        </p>
+      </div>
+      <CardFooterButtons
+        id={_id}
+        showDeleteIcon
+        checkUserEmail={checkUserEmail}
+        likes={likes}
+        comments={comments}
+        creator={creator}
+      />
     </div>
   );
 }

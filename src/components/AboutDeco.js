@@ -24,7 +24,7 @@ export default function AboutDeco() {
         <img
           src="https://i.ytimg.com/vi/Wl2OyaZVU3U/maxresdefault.jpg"
           className="memory-image"
-          alt="Test image"
+          alt="Memories image"
           loading="lazy"
         />
       </div>

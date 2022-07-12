@@ -10,7 +10,7 @@ import NotAvailableGif from './NotAvailableGif';
 
 function Home() {
   const { postsItems, isLoading } = useSelector((state) => state.post);
-  // if (!isLoading && !postsItems.length) return <NotAvailableGif />;
+
   return (
     <>
       {isLoading ? (
@@ -36,7 +36,10 @@ function Home() {
           {postsItems?.length === 0 ? (
             <NotAvailableGif />
           ) : (
-            <div className="row justify-content-center mt-4 mb-4">
+            <div
+              className="row justify-content-center mt-4 mb-4"
+              id="home-post-item-container"
+            >
               {postsItems?.map((item, i) => (
                 <PostItemContainer key={i} {...item} />
               ))}

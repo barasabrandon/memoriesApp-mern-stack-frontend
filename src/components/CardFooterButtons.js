@@ -29,10 +29,16 @@ export default function CardFooterButtons({
       dispatch(disLikePostItem(id));
     }
   };
+
+  const styles = {
+    border: 'none',
+    outline: 'none',
+  };
+
   return (
     <div className="card-footer">
       <small className="text-muted d-flex justify-content-between align-items-center">
-        <Button variant="text">
+        <Button variant="text" style={styles}>
           <span className="d-flex align-items-center">
             <span onClick={handleLike} style={{ cursor: 'pointer' }}>
               {hasLiked ? (
@@ -46,7 +52,7 @@ export default function CardFooterButtons({
         </Button>
 
         {/* Comments  */}
-        <Button variant="text">
+        <Button variant="text" style={styles}>
           <Link to={`/posts/${id}`}>
             <span className="d-flex align-items-center">
               <span>
