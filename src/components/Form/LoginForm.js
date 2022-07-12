@@ -1,17 +1,25 @@
-import { Button, Icon } from "@mui/material";
-import React, { useState } from "react";
-import GoogleLogin from "react-google-login";
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Button, Icon } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { useGoogleLogin } from '@react-oauth/google';
 
-import "./loginStyles.css";
+import { createAuthUser, signInUser } from '../../actions/authActions';
+
+import './loginStyles.css';
 
 function LoginForm() {
+  const userInLocalStorage = JSON.parse(localStorage.getItem('userProfile'));
+  const userToken = userInLocalStorage?.token;
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [login, setLogin] = useState(true);
   const [userData, setUserData] = useState({
-    firstName: "",
-    secondName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
+    firstName: '',
+    secondName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
   });
   const [showPassword, setShowPassword] = useState(false);
   const [passwordMissmatch, setPasswordMissmatch] = useState(false);
@@ -21,31 +29,47 @@ function LoginForm() {
     setUserData({ ...userData, [name]: value });
   };
 
+  const clearForm = () => {
+    setUserData({
+      firstName: '',
+      secondName: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+    });
+  };
+
   const handleShowPassword = (e) => {
     e.preventDefault();
     setShowPassword(!showPassword);
   };
 
-  const handleSignup = (e) => {
+  useEffect(() => {
+    if (userToken) {
+      navigate('/');
+    }
+  }, [userToken]);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (userData.password !== userData.confirmPassword) {
-      setPasswordMissmatch(true);
-      setUserData({ ...userData, password: "", confirmPassword: "" });
+    if (login) {
+      dispatch(signInUser(userData));
+      clearForm();
+      navigate('/');
+    } else {
+      if (userData.password !== userData.confirmPassword) {
+        setPasswordMissmatch(true);
+        setUserData({ ...userData, password: '', confirmPassword: '' });
+      }
+      dispatch(createAuthUser(userData));
+      clearForm();
+      navigate('/');
     }
   };
 
-  const handleGoogleSuccess = async (res) => {
-    console.log("Success");
-    console.log(res);
-  };
-  const handleGoogleFailure = (error) => {
-    console.log("Failed");
-    console.log(error);
-  };
-
   return (
-    <div>
+    <div className="login-form-container">
       <section className="vh-100">
         <div className="container py-5 h-100">
           <div className="row d-flex align-items-center justify-content-center h-100">
@@ -53,12 +77,17 @@ function LoginForm() {
               <img
                 src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
                 className="img-fluid"
-                alt=""
+                alt="User Page"
               />
             </div>
-            <div className="col-md-7 mt-2 col-lg-5 col-xl-5 offset-xl-1">
-              <p className="font-weight-light">Create Account:</p>
-              <form onSubmit={handleSignup}>
+            <div
+              className="col-md-7 mt-2 col-lg-5 col-xl-5 offset-xl-1"
+              id="signup-form"
+            >
+              <p className="font-weight-bold">
+                {login ? 'Login' : 'Create Account'}
+              </p>
+              <form onSubmit={handleSubmit}>
                 {/*  Name input  */}
                 {!login && (
                   <>
@@ -90,7 +119,6 @@ function LoginForm() {
                     </div>
                   </>
                 )}
-
                 {/*  Email input  */}
                 <div className="form-outline mb-1">
                   <input
@@ -108,7 +136,7 @@ function LoginForm() {
                 {/*  Password input */}
                 <div className="form-outline mb-1">
                   <input
-                    type={showPassword ? "text" : "password"}
+                    type={showPassword ? 'text' : 'password'}
                     id="password"
                     className="form-control form-control-lg"
                     name="password"
@@ -129,7 +157,7 @@ function LoginForm() {
                 {!login && (
                   <div className="form-outline mb-1">
                     <input
-                      type={showPassword ? "text" : "password"}
+                      type={showPassword ? 'text' : 'password'}
                       id="confirmPassword"
                       className="form-control form-control-lg"
                       name="confirmPassword"
@@ -153,9 +181,9 @@ function LoginForm() {
                 )}
                 <div className="d-flex justify-content-around align-items-center mb-1">
                   <p>
-                    {login ? "Don't" : "Already"} have an account?{" "}
+                    {login ? "Don't" : 'Already'} have an account?{' '}
                     <a href="#!" onClick={() => setLogin(!login)}>
-                      {login ? "Sign up" : "Sign in"}
+                      {login ? 'Sign up' : 'Sign in'}
                     </a>
                   </p>
                 </div>
@@ -163,31 +191,11 @@ function LoginForm() {
                   type="submit"
                   className="btn btn-primary btn-lg btn-block"
                 >
-                  {login ? "Sign in" : "Sign up"}
+                  {login ? 'Sign in' : 'Sign up'}
                 </button>
                 <div className="divider d-flex align-items-center my-4">
                   <p className="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
                 </div>
-
-                <GoogleLogin
-                  clientId="394888392816-saersp2nam0htbfj9bupmvkerat51l9l.apps.googleusercontent.com"
-                  render={(renderProps) => (
-                    <Button
-                      className=""
-                      color="primary"
-                      fullWidth
-                      onClick={renderProps.onClick}
-                      disabled={renderProps.disabled}
-                      startIcon={<Icon />}
-                      variant="contained"
-                    >
-                      Google Sign In
-                    </Button>
-                  )}
-                  onSuccess={handleGoogleSuccess}
-                  onFailure={handleGoogleFailure}
-                  cookiePolicy="single_host_origin"
-                />
               </form>
             </div>
           </div>

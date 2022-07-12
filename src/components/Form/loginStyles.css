@@ -1,7 +1,20 @@
 .divider:after,
 .divider:before {
-  content: "";
+  content: '';
   flex: 1;
   height: 1px;
   background: #eee;
+}
+
+#signup-form {
+  border: 1px solid green;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+@media (max-width: 600px) {
+  .login-form-container {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 }

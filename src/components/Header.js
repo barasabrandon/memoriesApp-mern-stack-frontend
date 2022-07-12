@@ -1,7 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 function Header() {
+  const userInLocalStorage = JSON.parse(localStorage.getItem('userProfile'));
+  const checkUserName = userInLocalStorage?.result?.name;
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -24,19 +28,24 @@ function Header() {
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
               <Link className="nav-link" to="/">
-                Home <span className="sr-only">(current)</span>
+                Home
+              </Link>
+            </li>
+            <li className="nav-item active">
+              <Link className="nav-link" to="/about">
+                About us
               </Link>
             </li>
           </ul>
 
           {/* Create Memory */}
           <Link to="/forms-create-memories">
-            <div className="m-3">Create memory </div>
+            <div className="m-3">Add Memory </div>
           </Link>
 
           {/* Signin */}
           <Link to="/signin">
-            <div>Sign in</div>
+            <div>{checkUserName ? `${checkUserName}` : 'Sign in'}</div>
           </Link>
         </div>
       </nav>

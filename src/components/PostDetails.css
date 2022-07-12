@@ -4,30 +4,36 @@
 }
 
 .container-image {
-  border: 1px solid black;
   margin-right: 20px;
-  width: 70%;
+  width: 40%;
   border-radius: 5px;
 }
 
 .container-image > img {
   width: 100%;
+  height: 200px;
+  padding: 20px;
 }
 
-.container-comments {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+.comments {
   margin: 10px;
   color: white;
   background-color: blue;
   opacity: 0.5;
-  padding: 20px;
 }
 
+.container-comments {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  overflow: hidden;
+}
+/* 
 .container-comments > p {
   width: 50% !important;
-}
+} */
 
 hr {
   background-color: green;
@@ -39,4 +45,92 @@ h3 {
   justify-content: center;
   align-items: center;
   text-transform: uppercase;
+}
+
+.related-topics {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+.related-topics-count {
+  background-color: blue;
+  color: white;
+  text-align: center;
+  margin: 5px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.comments-container {
+  width: 400px;
+  height: 200px;
+  border-radius: 5px;
+  background-image: url('../assets/images/memoriesImage.jpeg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding-left: 20px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  overflow-y: scroll;
+  box-sizing: content-box;
+}
+
+.comments-container-text {
+  margin: 5px;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 70%;
+  padding: 10px;
+  border-radius: 10px;
+  height: max-content;
+  color: white;
+}
+
+.comments-container-text > small {
+  color: red;
+}
+
+.delete-icon {
+  color: red;
+}
+
+@media (max-width: 600px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .container-image {
+    margin-bottom: 10px;
+    width: 112%;
+    margin: 0px;
+    margin-bottom: 10px;
+  }
+
+  .container-comments {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    width: 100%;
+    margin-left: 0px !important;
+    overflow: hidden;
+  }
+  .comments-container {
+    height: 200px;
+    overflow-y: scroll;
+    box-sizing: content-box;
+    margin-left: 17px;
+  }
+
+  .comments-container-text {
+    margin-left: 60px;
+    width: 230px;
+  }
 }
