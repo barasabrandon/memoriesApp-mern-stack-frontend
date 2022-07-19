@@ -1,7 +1,8 @@
 import React from 'react';
-import './About.css';
 import AboutDeco from './AboutDeco';
 import AboutText from './AboutText';
+
+import './About.css';
 
 export default function About() {
   return (

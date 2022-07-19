@@ -12,7 +12,9 @@ import { Button } from '@mui/material';
 import CardFooterButtons from './CardFooterButtons';
 
 function PostItemContainer({
+  isRelatedPost,
   _id,
+  index,
   creator,
   title,
   message,
@@ -37,10 +39,12 @@ function PostItemContainer({
     navigate('/forms-create-memories');
   };
 
+  const isFadeUpAos = index % 2 === 0 ? 'flip-left' : 'fade-up';
+
   return (
-    <div className="card" id="post-item-container">
+    <div className="card" id="post-item-container" data-aos={isFadeUpAos}>
       <div className="image-icon-container">
-        {creator == checkUserEmail && (
+        {creator === checkUserEmail && (
           <MoreHorizIcon className="morehoriz-icon" onClick={handleEditing} />
         )}
 

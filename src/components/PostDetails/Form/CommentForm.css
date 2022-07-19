@@ -1,0 +1,9 @@
+.form-field-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.comment-form-input-field {
+  flex: 1;
+}

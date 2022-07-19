@@ -23,6 +23,7 @@ function Home() {
                 width: '100px',
                 color: 'white',
               }}
+              alt="Loading..."
             />
           ) : (
             <h1>Loading...</h1>
@@ -41,7 +42,7 @@ function Home() {
               id="home-post-item-container"
             >
               {postsItems?.map((item, i) => (
-                <PostItemContainer key={i} {...item} />
+                <PostItemContainer index={i} key={i} {...item} />
               ))}
             </div>
           )}

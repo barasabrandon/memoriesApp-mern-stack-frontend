@@ -1,0 +1,221 @@
+.postDetails-container {
+  background-color: rgb(30, 144, 255);
+  padding: 20px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 0px;
+}
+
+hr {
+  color: black;
+}
+
+/* CONTENTS */
+.contents-container {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+
+.contents-image-container {
+  width: 40%;
+  height: 250px;
+}
+
+.contents-image-container > img {
+  width: 100%;
+  height: 100%;
+}
+
+.text-container {
+  width: 60%;
+  border-radius: 40px;
+  background-color: #add8e6;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.text-container > div {
+  margin-bottom: 20px;
+}
+
+.text-container-title {
+  margin-bottom: 10px;
+  top: 0px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.text-container-tags {
+  display: flex;
+  justify-content: center;
+}
+
+.text-container-tags > small {
+  font-weight: bolder;
+}
+
+/* STATICS-CONTAINER */
+
+.statics-text-container {
+  height: 499px;
+  width: 60%;
+  border-radius: 40px;
+  background-color: #add8e6;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.statics-covernsations-container {
+  flex: 1;
+  overflow-y: scroll;
+  padding: 5px;
+  background-image: url('../../assets/images/memoriesImage.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.statics-container {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  height: 500px;
+}
+
+.count-container {
+  width: 40%;
+  height: 250px;
+  position: relative;
+}
+
+/* Video and overlay for text */
+.hiking-video {
+  width: 100%;
+  height: 499px;
+  object-fit: cover;
+}
+
+.count-container-texts {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.comments {
+  width: 60%;
+  border-radius: 40px;
+  background-color: #add8e6;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.comments-form {
+  height: 60px;
+  margin-top: 10px;
+  padding: 3px;
+  padding-left: 20px;
+  color: black;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.comments-chats-Others-container {
+  margin-bottom: 5px;
+  border-radius: 0px 25px 0px 0px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px;
+  width: 80%;
+  height: max-content;
+}
+
+.comments-chats-Own-container {
+  margin-bottom: 5px;
+  margin-left: 10%;
+  border-radius: 0px 25px 0px 0px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px;
+  width: 80%;
+}
+
+/* RELATED POSTS */
+.related-posts-container {
+  background-color: lightgray;
+  margin: 20px;
+  padding: 20px;
+  margin-top: 0px;
+}
+
+.related-topics {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+/* SMALL SCREENS */
+
+@media (max-width: 600px) {
+  .postDetails-container {
+    min-height: 1000px;
+  }
+
+  /* CONTENTS */
+  .contents-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .contents-image-container {
+    width: 100%;
+  }
+
+  .text-container {
+    width: 100%;
+    font-size: 1.2rem;
+  }
+
+  /* STATICS-CONTAINER */
+
+  .statics-container {
+    flex-direction: column;
+    gap: 20px;
+    min-height: 850px;
+  }
+
+  .count-container {
+    width: 100%;
+    height: max-content;
+  }
+
+  .comments {
+    width: 100%;
+  }
+
+  .hiking-video {
+    height: 300px;
+  }
+
+  .statics-text-container {
+    min-height: 450px;
+    width: 100%;
+    border-radius: 20px;
+  }
+}

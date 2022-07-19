@@ -10,11 +10,15 @@ import Home from './components/Home';
 import PostDetails from './components/PostDetails';
 import { fetchPostsData } from './actions/postActions';
 import About from './components/About';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+import PostDetailsDeleted from './components/PostDetails/PostDetailsDeleted';
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    Aos.init({ duration: 3000 }); // Aos -for Animate on scroll
     dispatch(fetchPostsData());
   }, []);
 
@@ -23,7 +27,8 @@ function App() {
       <Header />
 
       <Routes>
-        <Route path="/posts/:id" element={<PostDetails />} />
+        <Route path="/posts/:id" element={<PostDetailsDeleted />} />
+        <Route path="/postsDeleted/:id" element={<PostDetails />} />
         <Route path="/signin" element={<LoginForm />} />
         <Route path="/about" element={<About />} />
         <Route path="/forms-create-memories" element={<CreateMemoryForm />} />

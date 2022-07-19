@@ -20,6 +20,11 @@ export default function SearchForm() {
     }
   };
 
+  const searchButtonStyles = {
+    border: 'none',
+    outline: 'none',
+  };
+
   return (
     <div className="search-form-container">
       <form>
@@ -39,6 +44,7 @@ export default function SearchForm() {
           variant="contained"
           disabled={!searchTerm}
           onClick={handleSubmit}
+          style={searchButtonStyles}
         >
           Search
         </Button>

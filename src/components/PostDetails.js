@@ -4,7 +4,7 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 
 import { useDispatch, useSelector } from 'react-redux';
 import { getPostById } from '../actions/postActions';
-import CommentForm from './Form/CommentForm';
+import CommentForm from './PostDetails/Form/CommentForm';
 
 import './PostDetails.css';
 import PostItemContainer from './PostItemContainer';
@@ -19,8 +19,8 @@ function PostDetails() {
     dispatch(getPostById(id));
   }, [id]);
 
-  const filteredPostItems = postsItems.filter((item) =>
-    item.title.toLowerCase().includes(postItem.title.toLowerCase())
+  const filteredPostItems = postsItems?.filter((item) =>
+    item.title.toLowerCase().includes(postItem?.title?.toLowerCase())
   );
 
   const finalFilteredItems = filteredPostItems.filter(

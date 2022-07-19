@@ -19,7 +19,7 @@ export default function AboutDeco() {
   };
 
   return (
-    <div className="about-deco-container">
+    <div className="about-deco-container" data-aos="fade-up">
       <div className="image-slider-container">
         <img
           src="https://i.ytimg.com/vi/Wl2OyaZVU3U/maxresdefault.jpg"
